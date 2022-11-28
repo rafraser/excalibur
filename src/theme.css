@@ -1,0 +1,9 @@
+:root {
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-size: 16px;
+
+  --text-color: #f5f6fa;
+  --surface-a: #353b48;
+  --surface-b: #2f3640;
+  background: linear-gradient(to right, #23074d, #cc5333);
+}
