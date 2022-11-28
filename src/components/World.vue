@@ -7,7 +7,7 @@
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import WorldPane from './WorldPane.vue';
 import * as THREE from 'three';
 import { onMounted } from '@vue/runtime-core';

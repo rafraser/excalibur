@@ -5,7 +5,7 @@
   <Footer/>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import World from './components/World.vue';
 import Footer from './components/Footer.vue';
 </script>
