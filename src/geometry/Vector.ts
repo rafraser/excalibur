@@ -49,4 +49,8 @@ export class Vector {
   multiplyScalar(val: number): Vector {
     return new Vector(this.x * val, this.y * val, this.z * val);
   }
+
+  toArray(): number[] {
+    return [this.x, this.y, this.z]
+  }
 }

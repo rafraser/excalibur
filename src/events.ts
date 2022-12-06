@@ -2,9 +2,9 @@ import { listen } from '@tauri-apps/api/event';
 import { readTextFile } from '@tauri-apps/api/fs';
 import { writeText } from '@tauri-apps/api/clipboard';
 import { splitTokens } from './io/vmf';
+import { addSolid } from './scene';
 
-listen<string[]>('tauri://file-drop', (event) => {
-  console.log(event);
+listen<string[]>('tauri://file-drop', async (event) => {
   if (!event.payload || event.payload.length < 1) return;
 
   const filename = event.payload[0];
@@ -12,7 +12,8 @@ listen<string[]>('tauri://file-drop', (event) => {
   switch(extension) {
     case 'vmf':
       // handle vmf
-      readAndParseFile(filename, splitTokens).then((r) => writeText(r));
+      const vmfData = await readAndParseFile(filename, splitTokens);
+      vmfData.solids.forEach(addSolid);
       break;
     default:
       // unknown file type

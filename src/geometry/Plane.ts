@@ -32,6 +32,7 @@ export class Plane {
   }
 
   equals(other: Plane): boolean {
+    if (!other) return false;
     return this.a.equals(other.a) && this.b.equals(other.b) && this.c.equals(other.c);
   }
 
@@ -49,7 +50,6 @@ export class Plane {
 
   distance(): number {
     const n = this.normal();
-    console.log('Normal: ', n);
     return this.normal().dot(this.a);
   }
 }

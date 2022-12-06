@@ -17,6 +17,7 @@ dist-ssr
 *.vmf
 *.vtf
 *.vmt
+*.vmx
 
 # Editor directories and files
 .vscode/*

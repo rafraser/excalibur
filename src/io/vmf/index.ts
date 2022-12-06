@@ -1,3 +1,5 @@
+import { fromRawSolid } from "./geometry";
+
 const DATA_REGEX = /"(.+?)"/g
 type VMFToken = Record<string, string | VMFToken[]>
 
@@ -33,10 +35,9 @@ export function splitTokens(text: string) {
     if (line.includes('}')) {
       // Close the current object
       depth -= 1;
-      console.log(depth, stack, temp.category);
 
       if (depth === 0) {
-        // We've completed a full object!
+        // We've completed a full, top-level object!
         result = addToToken(result, temp.category, temp.data);
         continue;
       }
@@ -75,5 +76,6 @@ export function splitTokens(text: string) {
 
   // Depth should be 0 and life should be good
   console.log(result);
-  return result;
+  const solids = (result['world'] as VMFToken[])[0]['solid'] as VMFToken[];
+  return { raw: result, solids: solids.map(fromRawSolid) };
 }

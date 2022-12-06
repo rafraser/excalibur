@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import { Solid } from "../geometry/Solid";
 
 export let scene = new THREE.Scene();
 
@@ -12,7 +13,7 @@ export function createDefaultSceneGeometry() {
 export function createSceneAmbience() {
   const bgColor = 0x0097e6;
   scene.background = new THREE.Color(bgColor);
-  scene.fog = new THREE.FogExp2(bgColor, 0.05);
+  // scene.fog = new THREE.FogExp2(bgColor, 0.005);
 
   const hemisphereLight = new THREE.HemisphereLight(0xffffff, 0x333333);
   hemisphereLight.position.set(0, 20, 0);
@@ -24,6 +25,13 @@ export function createSceneAmbience() {
   const grid = new THREE.GridHelper(size * cells, size, 0xaaaaaa, 0xffffff);
   grid.position.y -= 0.5;
   scene.add(grid);
+}
+
+export function addSolid(solid: Solid) {
+  const geometry = solid.toThreeGeometry();
+  const material = new THREE.MeshLambertMaterial({ color: 0xccccff });
+  const mesh = new THREE.Mesh(geometry, material);
+  scene.add(mesh);
 }
 
 export function resetScene() {

@@ -23,7 +23,7 @@ import { resetScene, createSceneAmbience, createDefaultSceneGeometry } from '../
 // plenty to do, so little time!
 
 function defaultCamera() {
-    const camera = new THREE.PerspectiveCamera(90, 1);
+    const camera = new THREE.PerspectiveCamera(90, 1, 0.1, 10000);
     camera.position.z = 3;
     camera.position.y = 3;
     return camera;
