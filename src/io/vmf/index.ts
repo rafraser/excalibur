@@ -1,5 +1,4 @@
 const DATA_REGEX = /"(.+?)"/g
-
 type VMFToken = Record<string, string | VMFToken[]>
 
 function addToToken(token: VMFToken, key: string, value: string | VMFToken) {
@@ -76,5 +75,5 @@ export function splitTokens(text: string) {
 
   // Depth should be 0 and life should be good
   console.log(result);
-  return JSON.stringify(result);
+  return result;
 }
